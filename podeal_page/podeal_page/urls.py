@@ -15,11 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+from django.views.static import serve
 
+from podeal_page import settings
 from podeal_page.views import UserStatisticsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/v1/users-stats/", UserStatisticsView.as_view()),
+    re_path(r'^staticfiles/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+
 ]
