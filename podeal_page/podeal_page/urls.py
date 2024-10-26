@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from podeal_page.views import UserStatisticsView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("api/v1/users-stats/", UserStatisticsView.as_view()),
 ]
