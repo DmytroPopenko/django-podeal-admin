@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'podeal_page.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/dmytrop/inner/podeal/database.db',
+        'NAME': '/home/ubuntu/database.db',
     }
 }
 
