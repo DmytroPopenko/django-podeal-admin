@@ -8,5 +8,6 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - "./database:/database"
+      - "./staticfiles:/app/staticfiles"
     environment:
       DEBUG: true
