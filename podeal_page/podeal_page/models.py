@@ -14,7 +14,8 @@ class Locations(models.Model):
 
 
 class Referrals(models.Model):
-    user = models.OneToOneField('User', models.CASCADE, primary_key=True)
+    id = models.AutoField(primary_key=True  )
+    user = models.OneToOneField('User', models.CASCADE)
     invited_user = models.ForeignKey('User', models.CASCADE, db_column='invited_user', related_name='referrals_invited_user_set')
     score_for_invite = models.IntegerField(blank=True, null=True)
     is_accepted = models.BooleanField(blank=True, null=True)
@@ -57,6 +58,7 @@ class User(models.Model):
 
 
 class UserAdditionalInfo(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, models.CASCADE)
     course = models.IntegerField()
     specialty = models.CharField(max_length=255)
