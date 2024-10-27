@@ -14,7 +14,7 @@ class Locations(models.Model):
 
 
 class Referrals(models.Model):
-    id = models.AutoField(primary_key=True  )
+    id = models.AutoField(primary_key=True)
     user = models.OneToOneField('User', models.CASCADE)
     invited_user = models.ForeignKey('User', models.CASCADE, db_column='invited_user', related_name='referrals_invited_user_set')
     score_for_invite = models.IntegerField(blank=True, null=True)
@@ -23,9 +23,6 @@ class Referrals(models.Model):
     class Meta:
         managed = False
         db_table = 'referrals'
-
-    def __str__(self):
-        return f'Referral from {self.user} to {self.invited_user}'
 
 
 class Team(models.Model):
