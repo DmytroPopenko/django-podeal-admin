@@ -14,8 +14,8 @@ class Locations(models.Model):
 
 
 class Referrals(models.Model):
-    user = models.OneToOneField('User', models.DO_NOTHING, primary_key=True)
-    invited_user = models.ForeignKey('User', models.DO_NOTHING, db_column='invited_user', related_name='referrals_invited_user_set')
+    user = models.OneToOneField('User', models.CASCADE, primary_key=True)
+    invited_user = models.ForeignKey('User', models.CASCADE, db_column='invited_user', related_name='referrals_invited_user_set')
     score_for_invite = models.IntegerField(blank=True, null=True)
     is_accepted = models.BooleanField(blank=True, null=True)
 
@@ -43,7 +43,7 @@ class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     user_name = models.CharField(max_length=255, blank=True, null=True)
     user_surname = models.CharField(max_length=255, blank=True, null=True)
-    team = models.ForeignKey(Team, models.DO_NOTHING, blank=True, null=True)
+    team = models.ForeignKey(Team, models.SET_NULL, blank=True, null=True)
     is_active = models.BooleanField(blank=True, null=True)
     custom_id = models.IntegerField(blank=True, null=True)
     role = models.CharField(max_length=100, blank=True, null=True)
@@ -57,7 +57,7 @@ class User(models.Model):
 
 
 class UserAdditionalInfo(models.Model):
-    user = models.ForeignKey(User, models.DO_NOTHING)
+    user = models.ForeignKey(User, models.CASCADE)
     course = models.IntegerField()
     specialty = models.CharField(max_length=255)
     english_level = models.CharField(max_length=50, blank=True, null=True)
